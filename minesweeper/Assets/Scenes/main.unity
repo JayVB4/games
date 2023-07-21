@@ -10893,7 +10893,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bomb: {fileID: 925534676313442349, guid: d42504d48367ace48837ceb143c99300, type: 3}
-  text: {fileID: 2348516432241692949, guid: 896a9d0aa8a44104eb246cb26e0af7f2, type: 3}
+  txt: {fileID: 2348516432241692949, guid: 896a9d0aa8a44104eb246cb26e0af7f2, type: 3}
+  t: {fileID: 1834555282017381313, guid: 896a9d0aa8a44104eb246cb26e0af7f2, type: 3}
   items:
   - {fileID: 355077052}
   - {fileID: 888751688}

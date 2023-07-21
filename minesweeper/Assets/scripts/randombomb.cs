@@ -5,7 +5,6 @@ using TMPro;
 public class randombomb : MonoBehaviour
 {
     public GameObject bomb;
-    public GameObject txt;
     public TMP_Text t;
     public GameObject[] items;
     int temp;
@@ -30,16 +29,170 @@ public class randombomb : MonoBehaviour
         for (int i = 0; i < 100; i++)
         {
             if(randomnum.Contains(i)){
-                grid[i+1]++;
+                // corners
+                // upper right corner
+                if (i == 0){
+                    if (randomnum.Contains(i+1)){
+                        grid[(i+1)]++;
+                    }
+                    if (randomnum.Contains(i+10)){
+                        grid[(i+10)]++;
+                    }
+                    if (randomnum.Contains(i+11)){
+                        grid[(i+11)]++;
+                    }
+                }
+                // upper left corner
+                else if (i == 9){
+                    if (randomnum.Contains(i-1)){
+                        grid[(i-1)]++;
+                    }
+                    if (randomnum.Contains(i+10)){
+                        grid[(i + 10)]++;
+                    }
+                    if (randomnum.Contains(i+9)){
+                        grid[(i + 9)]++;
+                    }
+                }
+                // lower left corner
+                else if (i == 99){
+                    if (randomnum.Contains(i-1)){
+                        grid[(i - 1)]++;
+                    }
+                    if (randomnum.Contains(i-10)){
+                        grid[(i - 10)]++;
+                    }
+                    if (randomnum.Contains(i-11)){
+                        grid[(i - 11)]++;
+                    }
+                }
+                // lower right corner
+                else if (i == 90){
+                    if (randomnum.Contains(i+1)){
+                        grid[(i + 1)]++;
+                    }
+                    if (randomnum.Contains(i-10)){
+                        grid[(i - 10)]++;
+                    }
+                    if (randomnum.Contains(i-9)){
+                        grid[(i - 9)]++;
+                    }
+                }
+                //edges
+                // right edge
+                else if (i % 10 == 0){
+                    if (randomnum.Contains(i+1)){
+                        grid[(i + 1)]++;
+                    }
+                    if (randomnum.Contains(i+10)){
+                        grid[(i + 10)]++;
+                    }
+                    if (randomnum.Contains(i+11)){
+                        grid[(i + 11)]++;
+                    }
+                    if (randomnum.Contains(i-9)){
+                        grid[(i - 9)]++;
+                    }
+                    if (randomnum.Contains(i-10)){
+                        grid[(i - 10)]++;
+                    }
+                }
+                // left edge
+                else if (i % 10 == 9){
+                    if (randomnum.Contains(i-1)){
+                        grid[(i - 1)]++;
+                    }
+                    if (randomnum.Contains(i-10)){
+                        grid[(i - 10)]++;
+                    }
+                    if (randomnum.Contains(i-11)){
+                        grid[(i - 11)]++;
+                    }
+                    if (randomnum.Contains(i+9)){
+                        grid[(i + 9)]++;
+                    }
+                    if (randomnum.Contains(i+10)){
+                        grid[(i + 10)]++;
+                    }
+                }
+                // upper edge
+                else if (i > 0 && i < 9){
+                    if (randomnum.Contains(i+1)){
+                        grid[(i + 1)]++;
+                    }
+                    if (randomnum.Contains(i-1)){
+                        grid[(i - 1)]++;
+                    }
+                    if (randomnum.Contains(i+11)){
+                        grid[(i + 11)]++;
+                    }
+                    if (randomnum.Contains(i+9)){
+                        grid[(i + 9)]++;
+                    }
+                    if (randomnum.Contains(i+10)){
+                        grid[(i + 10)]++;
+                    }
+                }
+                // lower edge
+                else if (i > 90 && i < 99){
+                    if (randomnum.Contains(i+1)){
+                        grid[(i + 1)]++;
+                    }
+                    if (randomnum.Contains(i-1)){
+                        grid[(i - 1)]++;
+                    }
+                    if (randomnum.Contains(i-11)){
+                        grid[(i - 11)]++;
+                    }
+                    if (randomnum.Contains(i-9)){
+                        grid[(i - 9)]++;
+                    }
+                    if (randomnum.Contains(i-10)){
+                        grid[(i - 10)]++;
+                    }
+                }
+                //middle number
+                else{
+                    if (randomnum.Contains(i+1)){
+                        grid[(i + 1)]++;
+                    }
+                    if (randomnum.Contains(i-1)){
+                        grid[(i - 1)]++;
+                    }
+                    if (randomnum.Contains(i+9)){
+                        grid[(i + 9)]++;
+                    }
+                    if (randomnum.Contains(i+10)){
+                        grid[(i + 10)]++;
+                    }
+                    if (randomnum.Contains(i+11)){
+                        grid[(i + 11)]++;
+                    }
+                    if (randomnum.Contains(i-9)){
+                        grid[(i - 9)]++;
+                    }
+                    if (randomnum.Contains(i-10)){
+                        grid[(i - 10)]++;
+                    }
+                    if (randomnum.Contains(i-11)){
+                        grid[(i - 11)]++;
+                    }
+                }
+
             }
         }
         for (int i = 0; i < 100; i++)
         {
-            t.text = grid[i].ToString();
+            t.text = (grid[i]).ToString();
             if (!(randomnum.Contains(i)))
             {
-                GameObject clone = Instantiate(txt,items[i].transform.position,txt.transform.rotation);
+                TMP_Text clone = Instantiate(t,items[i].transform.position,t.transform.rotation);
             }
+        }
+
+        for (int i = 0; i < 100; i++)
+        {
+            Debug.Log(grid[i]);
         }
     }
 }
