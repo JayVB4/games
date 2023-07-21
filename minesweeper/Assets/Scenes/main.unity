@@ -10893,6 +10893,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bomb: {fileID: 925534676313442349, guid: d42504d48367ace48837ceb143c99300, type: 3}
+  text: {fileID: 2348516432241692949, guid: 896a9d0aa8a44104eb246cb26e0af7f2, type: 3}
   items:
   - {fileID: 355077052}
   - {fileID: 888751688}
@@ -11638,7 +11639,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1190001099802349247, guid: 7f8154d0e2d397a4a94d1329c2c5ef29, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.77
+      value: -0.08
       objectReference: {fileID: 0}
     - target: {fileID: 1190001099802349247, guid: 7f8154d0e2d397a4a94d1329c2c5ef29, type: 3}
       propertyPath: m_LocalPosition.y
