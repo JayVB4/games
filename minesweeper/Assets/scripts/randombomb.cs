@@ -10,7 +10,6 @@ public class randombomb : MonoBehaviour
     int temp;
     int[] grid = new int[100];
     int[] randomnum = { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 };
-
     void Start()
     {
         for (int i = 0; i < 100; i++)
@@ -186,7 +185,8 @@ public class randombomb : MonoBehaviour
             t.text = grid[i].ToString();
             if (!(randomnum.Contains(i)))
             {
-                TMP_Text clone = Instantiate(t,items[i].transform.position,t.transform.rotation);
+                Vector3 posvect = new Vector3(items[i].transform.position.x,-0.15F,items[i].transform.position.z);;
+                TMP_Text clone = Instantiate(t,posvect,t.transform.rotation);
             }
         }
 
