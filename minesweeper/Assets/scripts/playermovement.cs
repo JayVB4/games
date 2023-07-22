@@ -7,8 +7,15 @@ public class playermovement : MonoBehaviour
 
     public Camera cam;
     public NavMeshAgent agent;
+    public Rigidbody rb;
+    public float upwardsforce=5f;
 
     // Update is called once per frame
+
+    
+
+
+
     void Update()
     {
 
@@ -21,10 +28,9 @@ public class playermovement : MonoBehaviour
             {
                 //move our agent
                 agent.SetDestination(hit.point);
-
             }
-
         }
-        
+       
+
     }
 }

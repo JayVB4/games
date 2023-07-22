@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.43846747, g: 0.48655277, b: 0.5668258, a: 1}
+  m_IndirectSpecularColor: {r: 0.43846747, g: 0.48655325, b: 0.56682634, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6305,14 +6305,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.60876137, y: 0, z: 0, w: 0.7933534}
-  m_LocalPosition: {x: 0, y: 13.41, z: -5.06}
+  m_LocalRotation: {x: 0.5538054, y: -0.00012179928, z: -0.0010189136, w: 0.83264554}
+  m_LocalPosition: {x: -0.15, y: 11.61, z: -7.53}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 75, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 67.257, y: -0.197, z: -0.271}
 --- !u!1 &966235839
 GameObject:
   m_ObjectHideFlags: 0
@@ -9313,7 +9313,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -11081,7 +11081,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bomb: {fileID: 925534676313442349, guid: d42504d48367ace48837ceb143c99300, type: 3}
-  txt: {fileID: 2348516432241692949, guid: 896a9d0aa8a44104eb246cb26e0af7f2, type: 3}
   t: {fileID: 1834555282017381313, guid: 896a9d0aa8a44104eb246cb26e0af7f2, type: 3}
   items:
   - {fileID: 355077052}
@@ -11871,6 +11870,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1474245614944473521, guid: 7f8154d0e2d397a4a94d1329c2c5ef29, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1474245614944473521, guid: 7f8154d0e2d397a4a94d1329c2c5ef29, type: 3}
       propertyPath: cam
       value: 
       objectReference: {fileID: 963194227}
@@ -11878,6 +11881,10 @@ PrefabInstance:
       propertyPath: agent
       value: 
       objectReference: {fileID: 1661295570}
+    - target: {fileID: 1474245614944473521, guid: 7f8154d0e2d397a4a94d1329c2c5ef29, type: 3}
+      propertyPath: upwardsforce
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4621723492938114364, guid: 7f8154d0e2d397a4a94d1329c2c5ef29, type: 3}
       propertyPath: m_Name
       value: player
