@@ -63,6 +63,12 @@ public class OutlineSelection : MonoBehaviour
                 }
             }
         }
+
+        if(Input.GetMouseButtonDown(1)){
+            if(selection){
+                selection.gameObject.SetActive(false);
+            }
+        }
     }
 
 }
