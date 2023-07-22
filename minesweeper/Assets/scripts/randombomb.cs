@@ -13,10 +13,12 @@ public class randombomb : MonoBehaviour
     int enabledcounter;
     void Start()
     {
+        //initialize
         for (int i = 0; i < 100; i++)
         {
             grid[i] = 0;
         }
+        //randomize
         for (int i = 0; i < 10; i++)
         {
             do
@@ -26,162 +28,84 @@ public class randombomb : MonoBehaviour
             GameObject clone = Instantiate(bomb,items[temp].transform.position,Quaternion.identity);
             randomnum[i] = temp;
         }
+        //number assignment
         for (int i = 0; i < 100; i++)
         {
             if(randomnum.Contains(i)){
-                grid[i]--;
+                grid[i]=-20;
                 // corners
                 // upper right corner
                 if (i == 0){
-                    if (!(randomnum.Contains(i+1))){
-                        grid[(i+1)]++;
-                    }
-                    if (!(randomnum.Contains(i+10))){
-                        grid[(i+10)]++;
-                    }
-                    if (!(randomnum.Contains(i+11))){
-                        grid[(i+11)]++;
-                    }
+                    grid[(i+1)]++;
+                    grid[(i+10)]++;
+                    grid[(i+11)]++;
                 }
                 // upper left corner
                 else if (i == 9){
-                    if (!(randomnum.Contains(i-1))){
-                        grid[(i-1)]++;
-                    }
-                    if (!(randomnum.Contains(i+10))){
-                        grid[(i + 10)]++;
-                    }
-                    if (!(randomnum.Contains(i+9))){
-                        grid[(i + 9)]++;
-                    }
+                    grid[(i-1)]++;
+                    grid[(i + 10)]++;
+                    grid[(i + 9)]++;
                 }
                 // lower left corner
                 else if (i == 99){
-                    if (!(randomnum.Contains(i-1))){
-                        grid[(i - 1)]++;
-                    }
-                    if (!(randomnum.Contains(i-10))){
-                        grid[(i - 10)]++;
-                    }
-                    if (!(randomnum.Contains(i-11))){
-                        grid[(i - 11)]++;
-                    }
+                    grid[(i - 1)]++;
+                    grid[(i - 10)]++;
+                    grid[(i - 11)]++;
                 }
                 // lower right corner
                 else if (i == 90){
-                    if (!(randomnum.Contains(i+1))){
-                        grid[(i + 1)]++;
-                    }
-                    if (!(randomnum.Contains(i-10))){
-                        grid[(i - 10)]++;
-                    }
-                    if (!(randomnum.Contains(i-9))){
-                        grid[(i - 9)]++;
-                    }
+                    grid[(i + 1)]++;
+                    grid[(i - 10)]++;
+                    grid[(i - 9)]++;
                 }
                 //edges
                 // right edge
                 else if (i % 10 == 0){
-                    if (!(randomnum.Contains(i+1))){
-                        grid[(i + 1)]++;
-                    }
-                    if (!(randomnum.Contains(i+10))){
-                        grid[(i + 10)]++;
-                    }
-                    if (!(randomnum.Contains(i+11))){
-                        grid[(i + 11)]++;
-                    }
-                    if (!(randomnum.Contains(i-9))){
-                        grid[(i - 9)]++;
-                    }
-                    if (!(randomnum.Contains(i-10))){
-                        grid[(i - 10)]++;
-                    }
+                    grid[(i + 1)]++;
+                    grid[(i + 10)]++;
+                    grid[(i + 11)]++;
+                    grid[(i - 9)]++;
+                    grid[(i - 10)]++;
                 }
                 // left edge
                 else if (i % 10 == 9){
-                    if (!(randomnum.Contains(i-1))){
-                        grid[(i - 1)]++;
-                    }
-                    if (!(randomnum.Contains(i-10))){
-                        grid[(i - 10)]++;
-                    }
-                    if (!(randomnum.Contains(i-11))){
-                        grid[(i - 11)]++;
-                    }
-                    if (!(randomnum.Contains(i+9))){
-                        grid[(i + 9)]++;
-                    }
-                    if (!(randomnum.Contains(i+10))){
-                        grid[(i + 10)]++;
-                    }
+                    grid[(i - 1)]++;
+                    grid[(i - 10)]++;
+                    grid[(i - 11)]++;
+                    grid[(i + 9)]++;
+                    grid[(i + 10)]++;
                 }
                 // upper edge
                 else if (i > 0 && i < 9){
-                    if (!(randomnum.Contains(i+1))){
-                        grid[(i + 1)]++;
-                    }
-                    if (!(randomnum.Contains(i-1))){
-                        grid[(i - 1)]++;
-                    }
-                    if (!(randomnum.Contains(i+11))){
-                        grid[(i + 11)]++;
-                    }
-                    if (!(randomnum.Contains(i+9))){
-                        grid[(i + 9)]++;
-                    }
-                    if (!(randomnum.Contains(i+10))){
-                        grid[(i + 10)]++;
-                    }
+                    grid[(i + 1)]++;
+                    grid[(i - 1)]++;
+                    grid[(i + 11)]++;
+                    grid[(i + 9)]++;
+                    grid[(i + 10)]++;
                 }
                 // lower edge
                 else if (i > 90 && i < 99){
-                    if (!(randomnum.Contains(i+1))){
-                        grid[(i + 1)]++;
-                    }
-                    if (!(randomnum.Contains(i-1))){
-                        grid[(i - 1)]++;
-                    }
-                    if (!(randomnum.Contains(i-11))){
-                        grid[(i - 11)]++;
-                    }
-                    if (!(randomnum.Contains(i-9))){
-                        grid[(i - 9)]++;
-                    }
-                    if (!(randomnum.Contains(i-10))){
-                        grid[(i - 10)]++;
-                    }
+                    grid[(i + 1)]++;
+                    grid[(i - 1)]++;
+                    grid[(i - 11)]++;
+                    grid[(i - 9)]++;
+                    grid[(i - 10)]++;
                 }
                 //middle number
                 else{
-                    if (!(randomnum.Contains(i+1))){
-                        grid[(i + 1)]++;
-                    }
-                    if (!(randomnum.Contains(i-1))){
-                        grid[(i - 1)]++;
-                    }
-                    if (!(randomnum.Contains(i+9))){
-                        grid[(i + 9)]++;
-                    }
-                    if (!(randomnum.Contains(i+10))){
-                        grid[(i + 10)]++;
-                    }
-                    if (!(randomnum.Contains(i+11))){
-                        grid[(i + 11)]++;
-                    }
-                    if (!(randomnum.Contains(i-9))){
-                        grid[(i - 9)]++;
-                    }
-                    if (!(randomnum.Contains(i-10))){
-                        grid[(i - 10)]++;
-                    }
-                    if (!(randomnum.Contains(i-11))){
-                        grid[(i - 11)]++;
-                    }
+                    grid[(i + 1)]++;
+                    grid[(i - 1)]++;
+                    grid[(i + 9)]++;
+                    grid[(i + 10)]++;
+                    grid[(i + 11)]++;
+                    grid[(i - 9)]++;
+                    grid[(i - 10)]++;
+                    grid[(i - 11)]++;
                 }
 
             }
         }
+        //number placement
         for (int i = 0; i < 100; i++)
         {
             txt.text = grid[i].ToString();
@@ -199,9 +123,11 @@ public class randombomb : MonoBehaviour
         {
             enabledcounter=0;
             if(!items[i].gameObject.activeSelf){
-                if(grid[i]==-1){
+                //lose
+                if(grid[i]<0){
                     //scene change to end screen
                 }
+                //zero clearance
                 else if(grid[i]==0)
                 {
                     if (i == 0){
@@ -278,7 +204,8 @@ public class randombomb : MonoBehaviour
                 enabledcounter++;
             }
         }
-        if(enabledcounter==0)
+        //win
+        if(enabledcounter==10)
         {
             //scene changes to win screen
         }
