@@ -5,11 +5,12 @@ using TMPro;
 public class randombomb : MonoBehaviour
 {
     public GameObject bomb;
-    public TMP_Text t;
+    public TMP_Text txt;
     public GameObject[] items;
     int temp;
     int[] grid = new int[100];
     int[] randomnum = { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 };
+    int enabledcounter;
     void Start()
     {
         for (int i = 0; i < 100; i++)
@@ -28,6 +29,7 @@ public class randombomb : MonoBehaviour
         for (int i = 0; i < 100; i++)
         {
             if(randomnum.Contains(i)){
+                grid[i]--;
                 // corners
                 // upper right corner
                 if (i == 0){
@@ -182,17 +184,103 @@ public class randombomb : MonoBehaviour
         }
         for (int i = 0; i < 100; i++)
         {
-            t.text = grid[i].ToString();
+            txt.text = grid[i].ToString();
             if (!(randomnum.Contains(i)))
             {
                 Vector3 posvect = new Vector3(items[i].transform.position.x,-0.15F,items[i].transform.position.z);;
-                TMP_Text clone = Instantiate(t,posvect,t.transform.rotation);
+                TMP_Text clone = Instantiate(txt,posvect,txt.transform.rotation);
             }
         }
+    }
 
+    void Update()
+    {
         for (int i = 0; i < 100; i++)
         {
-            Debug.Log(grid[i]);
+            enabledcounter=0;
+            if(!items[i].gameObject.activeSelf){
+                if(grid[i]==-1){
+                    //scene change to end screen
+                }
+                else if(grid[i]==0)
+                {
+                    if (i == 0){
+                        items[(i+1)].gameObject.SetActive(false);
+                        items[(i+10)].gameObject.SetActive(false);
+                        items[(i+11)].gameObject.SetActive(false);
+                    }
+                    // upper left corner
+                    else if (i == 9){
+                        items[(i-1)].gameObject.SetActive(false);
+                        items[(i + 10)].gameObject.SetActive(false);
+                        items[(i + 9)].gameObject.SetActive(false);
+                    }
+                    // lower left corner
+                    else if (i == 99){
+                        items[(i - 1)].gameObject.SetActive(false);
+                        items[(i - 10)].gameObject.SetActive(false);
+                        items[(i - 11)].gameObject.SetActive(false);
+                    }
+                    // lower right corner
+                    else if (i == 90){
+                        items[(i + 1)].gameObject.SetActive(false);
+                        items[(i - 10)].gameObject.SetActive(false);
+                        items[(i - 9)].gameObject.SetActive(false);
+                    }
+                    //edges
+                    // right edge
+                    else if (i % 10 == 0){
+                        items[(i + 1)].gameObject.SetActive(false);
+                        items[(i + 10)].gameObject.SetActive(false);
+                        items[(i + 11)].gameObject.SetActive(false);
+                        items[(i - 9)].gameObject.SetActive(false);
+                        items[(i - 10)].gameObject.SetActive(false);
+                    }
+                    // left edge
+                    else if (i % 10 == 9){
+                        items[(i - 1)].gameObject.SetActive(false);
+                        items[(i - 10)].gameObject.SetActive(false);
+                        items[(i - 11)].gameObject.SetActive(false);
+                        items[(i + 9)].gameObject.SetActive(false);
+                        items[(i + 10)].gameObject.SetActive(false);
+                    }
+                    // upper edge
+                    else if (i > 0 && i < 9){
+                        items[(i + 1)].gameObject.SetActive(false);
+                        items[(i - 1)].gameObject.SetActive(false);
+                        items[(i + 11)].gameObject.SetActive(false);
+                        items[(i + 9)].gameObject.SetActive(false);
+                        items[(i + 10)].gameObject.SetActive(false);
+                    }
+                    // lower edge
+                    else if (i > 90 && i < 99){
+                        items[(i + 1)].gameObject.SetActive(false);
+                        items[(i - 1)].gameObject.SetActive(false);
+                        items[(i - 11)].gameObject.SetActive(false);
+                        items[(i - 9)].gameObject.SetActive(false);
+                        items[(i - 10)].gameObject.SetActive(false);
+                    }
+                    //middle number
+                    else{
+                        items[(i + 1)].gameObject.SetActive(false);
+                        items[(i - 1)].gameObject.SetActive(false);
+                        items[(i + 9)].gameObject.SetActive(false);
+                        items[(i + 10)].gameObject.SetActive(false);
+                        items[(i + 11)].gameObject.SetActive(false);
+                        items[(i - 9)].gameObject.SetActive(false);
+                        items[(i - 10)].gameObject.SetActive(false);
+                        items[(i - 11)].gameObject.SetActive(false);
+                    }
+                }   
+            }
+            else
+            {
+                enabledcounter++;
+            }
+        }
+        if(enabledcounter==0)
+        {
+            //scene changes to win screen
         }
     }
 }
