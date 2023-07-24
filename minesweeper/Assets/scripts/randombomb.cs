@@ -1,6 +1,7 @@
 using System.Linq;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class randombomb : MonoBehaviour
 {
@@ -121,14 +122,14 @@ public class randombomb : MonoBehaviour
 
     void Update()
     {
+        enabledcounter=0;
         for (int i = 0; i < 100; i++)
         {
-            enabledcounter=0;
 
             if(!items[i].gameObject.activeSelf){
                 //lose
                 if(grid[i]<0){
-                    //scene change to end screen
+                    SceneManager.LoadScene("lose");
                 }
                 //zero clearance
                 else if(grid[i]==0)
@@ -210,7 +211,7 @@ public class randombomb : MonoBehaviour
         //win
         if(enabledcounter==10)
         {
-            //scene changes to win screen
+            SceneManager.LoadScene("win");
         }
     }
 }
