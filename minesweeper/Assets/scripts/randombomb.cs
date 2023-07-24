@@ -11,6 +11,7 @@ public class randombomb : MonoBehaviour
     int[] grid = new int[100];
     int[] randomnum = { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 };
     int enabledcounter;
+
     void Start()
     {
         //initialize
@@ -23,7 +24,7 @@ public class randombomb : MonoBehaviour
         {
             do
             {
-                temp = Random.Range(0, items.Length);
+            temp = Random.Range(0, items.Length);
             } while (randomnum.Contains(temp));
             GameObject clone = Instantiate(bomb,items[temp].transform.position,Quaternion.identity);
             randomnum[i] = temp;
@@ -105,6 +106,7 @@ public class randombomb : MonoBehaviour
 
             }
         }
+        
         //number placement
         for (int i = 0; i < 100; i++)
         {
@@ -122,6 +124,7 @@ public class randombomb : MonoBehaviour
         for (int i = 0; i < 100; i++)
         {
             enabledcounter=0;
+
             if(!items[i].gameObject.activeSelf){
                 //lose
                 if(grid[i]<0){
