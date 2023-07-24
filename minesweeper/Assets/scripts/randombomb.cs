@@ -8,9 +8,11 @@ public class randombomb : MonoBehaviour
     public GameObject bomb;
     public TMP_Text txt;
     public GameObject[] items;
+    public modeSO modedropdown;
+
     int temp;
+    int mode=10;
     int[] grid = new int[100];
-    int[] randomnum = { -1, -1, -1, -1, -1, -1, -1, -1, -1, -1 };
     int enabledcounter;
 
     void Start()
@@ -20,12 +22,19 @@ public class randombomb : MonoBehaviour
         {
             grid[i] = 0;
         }
+        mode = modedropdown.Value;
+        mode = mode * 10;
+        int[] randomnum = new int[mode];
+        for (int i = 0; i < mode; i++)
+        {
+            randomnum[i]=-1;
+        }
         //randomize
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < mode; i++)
         {
             do
             {
-            temp = Random.Range(0, items.Length);
+            temp = Random.Range(0,items.Length);
             } while (randomnum.Contains(temp));
             GameObject clone = Instantiate(bomb,items[temp].transform.position,Quaternion.identity);
             randomnum[i] = temp;
@@ -209,7 +218,7 @@ public class randombomb : MonoBehaviour
             }
         }
         //win
-        if(enabledcounter==10)
+        if(enabledcounter==mode)
         {
             SceneManager.LoadScene("win");
         }
