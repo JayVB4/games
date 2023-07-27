@@ -11066,7 +11066,7 @@ Transform:
   - {fileID: 200736315}
   - {fileID: 1743572428}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2018091058
 MonoBehaviour:
@@ -11080,6 +11080,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e1ad509ed01e0245a397294c60fd6df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  box: {fileID: 1521339368319811756, guid: f17968e96bb45e147b6ce1d6f0f80a25, type: 3}
   bomb: {fileID: 925534676313442349, guid: d42504d48367ace48837ceb143c99300, type: 3}
   txt: {fileID: 1834555282017381313, guid: 896a9d0aa8a44104eb246cb26e0af7f2, type: 3}
   items:
@@ -11824,7 +11825,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1190001099802349247, guid: 7f8154d0e2d397a4a94d1329c2c5ef29, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1190001099802349247, guid: 7f8154d0e2d397a4a94d1329c2c5ef29, type: 3}
       propertyPath: m_LocalScale.y

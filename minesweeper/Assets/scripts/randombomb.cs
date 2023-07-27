@@ -5,16 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class randombomb : MonoBehaviour
 {
+    public GameObject box;
     public GameObject bomb;
     public TMP_Text txt;
     public GameObject[] items;
     public modeSO modedropdown;
+    GameObject[] boxes;
+    GameObject[] bombs;
 
     int temp;
     int mode=10;
     int[] grid = new int[100];
     int enabledcounter;
-
     void Start()
     {
         //initialize
@@ -25,6 +27,8 @@ public class randombomb : MonoBehaviour
         mode = modedropdown.Value;
         mode = mode * 10;
         int[] randomnum = new int[mode];
+        boxes = new GameObject[mode];
+        bombs = new GameObject[mode];
         for (int i = 0; i < mode; i++)
         {
             randomnum[i]=-1;
@@ -37,6 +41,9 @@ public class randombomb : MonoBehaviour
             temp = Random.Range(0,items.Length);
             } while (randomnum.Contains(temp));
             GameObject clone = Instantiate(bomb,items[temp].transform.position,Quaternion.identity);
+            GameObject clone2 = Instantiate(box,items[temp].transform.position,Quaternion.identity);
+            boxes[i]=clone2;
+            bombs[i]=clone;
             randomnum[i] = temp;
         }
         //number assignment
@@ -138,7 +145,11 @@ public class randombomb : MonoBehaviour
             if(!items[i].gameObject.activeSelf){
                 //lose
                 if(grid[i]<0){
-                    SceneManager.LoadScene("lose");
+                    for(int j=0;j<mode;j++){
+                        boxes[j].gameObject.SetActive(true);
+                        bombs[j].gameObject.SetActive(true);
+                    }
+                    Invoke("losescene",2f);
                 }
                 //zero clearance
                 else if(grid[i]==0)
@@ -220,7 +231,13 @@ public class randombomb : MonoBehaviour
         //win
         if(enabledcounter==mode)
         {
-            SceneManager.LoadScene("win");
+            Invoke("winscene",1f);
         }
+    }
+    void winscene(){
+        SceneManager.LoadScene("win");
+    }
+    void losescene(){
+        SceneManager.LoadScene("lose");
     }
 }
